@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using miniProject.Models;
 
 namespace miniProject.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20220105224125_add_updated1")]
+    partial class add_updated1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,8 +51,8 @@ namespace miniProject.Migrations
                     b.Property<string>("BusinessPhone")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Company")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("CompanyID")
+                        .HasColumnType("int");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
@@ -66,7 +68,25 @@ namespace miniProject.Migrations
 
                     b.HasKey("ID");
 
+                    b.HasIndex("CompanyID");
+
                     b.ToTable("informations");
+                });
+
+            modelBuilder.Entity("miniProject.Models.Information", b =>
+                {
+                    b.HasOne("miniProject.Models.Company", "Company")
+                        .WithMany("Informations")
+                        .HasForeignKey("CompanyID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Company");
+                });
+
+            modelBuilder.Entity("miniProject.Models.Company", b =>
+                {
+                    b.Navigation("Informations");
                 });
 #pragma warning restore 612, 618
         }

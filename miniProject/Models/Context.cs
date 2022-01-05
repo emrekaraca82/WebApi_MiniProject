@@ -9,11 +9,6 @@ namespace miniProject.Models
     public class Context : DbContext
     {
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.UseSqlServer(@"Server=.;Database=miniProject;Trusted_Connection=true;");
-        //}
-
         public Context(DbContextOptions<Context> options) : base(options)
         {
 
