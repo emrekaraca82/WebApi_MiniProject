@@ -19,12 +19,9 @@ namespace miniProject.Controllers
     public class CompanyController : ControllerBase
     {
         private readonly Context _context;
-        private readonly IConfiguration _configuration;
-        private readonly IWebHostEnvironment _env;
-        public CompanyController(Context context, IConfiguration configuration, IWebHostEnvironment env)
+       
+        public CompanyController(Context context)
         {
-            _configuration = configuration;
-            _env = env;
             _context = context;
         }
 

@@ -15,7 +15,8 @@ namespace miniProject.Models
         public string BusinessPhone { get; set; }
         public string Address { get; set; }
         public string Image { get; set; }
-       
-       
+        public List<Intermediate> Intermediates { get; set; }
+
+
     }
 }

@@ -16,6 +16,7 @@ namespace miniProject.Models
       
         public DbSet<Information> informations { get; set; }
         public DbSet<Company> companies { get; set; }
+        public DbSet<Intermediate> intermediates { get; set; }
 
     }
 }

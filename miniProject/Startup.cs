@@ -38,8 +38,6 @@ namespace miniProject
             });
             services.AddDbContext<Context>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
-            //services.AddCors();
-            //Enable CORS
             services.AddCors(c =>
             {
                 c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod()
@@ -56,7 +54,6 @@ namespace miniProject
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "miniProject v1"));
             }
-            //app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyHeader());
             app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseHttpsRedirection();
 
